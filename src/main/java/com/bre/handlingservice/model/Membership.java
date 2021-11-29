@@ -8,7 +8,6 @@ public class Membership extends Product{
 
     private boolean isActivated;
 
-
     public boolean isUpgraded() {
         return isUpgraded;
     }

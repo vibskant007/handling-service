@@ -1,6 +1,7 @@
 package com.bre.handlingservice.rules.impl;
 
 import com.bre.handlingservice.model.Membership;
+import com.bre.handlingservice.model.Order;
 import com.bre.handlingservice.model.OrderStatusDto;
 import com.bre.handlingservice.rules.OrderRule;
 import com.bre.handlingservice.service.EmailService;
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MembershipOrderRule implements OrderRule<Membership> {
+public class MembershipOrderRule implements OrderRule {
 
     @Autowired
     MembershipService membershipService;
@@ -18,9 +19,9 @@ public class MembershipOrderRule implements OrderRule<Membership> {
     EmailService emailService;
 
     @Override
-    public OrderStatusDto handleOrder(Membership membership) {
-        membershipService.activateMembership(membership);
-        emailService.sendEmail(membership);
+    public OrderStatusDto handleOrder(Order order) {
+        membershipService.activateMembership(order);
+        emailService.sendEmail(order.getMembership());
         return OrderStatusDto.builder().success(true).message("Success ....  ").build();
     }
 }

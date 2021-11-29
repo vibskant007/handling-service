@@ -1,6 +1,7 @@
 package com.bre.handlingservice.rules.impl;
 
 import com.bre.handlingservice.model.Book;
+import com.bre.handlingservice.model.Order;
 import com.bre.handlingservice.model.OrderStatusDto;
 import com.bre.handlingservice.rules.OrderRule;
 import com.bre.handlingservice.service.CommisionService;
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BookOrderRule implements OrderRule<Book> {
+public class BookOrderRule implements OrderRule {
 
     @Autowired
     PackagingSevice packagingSevice;
@@ -19,10 +20,9 @@ public class BookOrderRule implements OrderRule<Book> {
 
 
     @Override
-    public OrderStatusDto handleOrder(Book order) {
+    public OrderStatusDto handleOrder(Order order) {
        packagingSevice.process(order);
-       commisionService.calculateCommision(order.getPrice());
-
+       commisionService.calculateCommision(order.getBook().getPrice());
        return OrderStatusDto.builder().success(true).message("Success ....  ").build();
 
     }
