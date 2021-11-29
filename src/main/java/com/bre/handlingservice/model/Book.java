@@ -1,5 +1,10 @@
 package com.bre.handlingservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Book extends Product{
 
     private double price;
@@ -22,9 +27,10 @@ public class Book extends Product{
 
     private int quantity;
 
-    public Book(String productName, ProductType productType,double price) {
+    public Book(String productName, ProductType productType,double price,int quantity) {
         super(productName, productType);
         this.price = price;
+        this.quantity = quantity;
     }
 
 

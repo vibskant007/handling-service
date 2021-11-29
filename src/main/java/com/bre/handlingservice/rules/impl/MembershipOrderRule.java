@@ -22,6 +22,6 @@ public class MembershipOrderRule implements OrderRule {
     public OrderStatusDto handleOrder(Order order) {
         membershipService.activateMembership(order);
         emailService.sendEmail(order.getMembership());
-        return OrderStatusDto.builder().success(true).message("Success ....  ").build();
+        return OrderStatusDto.builder().success(true).message("Membership activated & Email Sent!").build();
     }
 }

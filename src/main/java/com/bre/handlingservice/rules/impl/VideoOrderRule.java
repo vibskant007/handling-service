@@ -12,6 +12,6 @@ public class VideoOrderRule implements OrderRule {
     @Override
     public OrderStatusDto handleOrder(Order order) {
        //logic to add a free “First Aid” video to the packing slip
-        return OrderStatusDto.builder().success(true).message("Success ....  ").build();
+        return OrderStatusDto.builder().success(true).message("Added a free “First Aid” video to the packing slip!").build();
     }
 }

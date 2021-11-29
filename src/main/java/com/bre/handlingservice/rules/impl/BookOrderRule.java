@@ -1,6 +1,5 @@
 package com.bre.handlingservice.rules.impl;
 
-import com.bre.handlingservice.model.Book;
 import com.bre.handlingservice.model.Order;
 import com.bre.handlingservice.model.OrderStatusDto;
 import com.bre.handlingservice.rules.OrderRule;
@@ -23,7 +22,7 @@ public class BookOrderRule implements OrderRule {
     public OrderStatusDto handleOrder(Order order) {
        packagingSevice.process(order);
        commisionService.calculateCommision(order.getBook().getPrice());
-       return OrderStatusDto.builder().success(true).message("Success ....  ").build();
+       return OrderStatusDto.builder().success(true).message("Processed Packaging & Commission !").build();
 
     }
 }

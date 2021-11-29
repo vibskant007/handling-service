@@ -23,6 +23,6 @@ public class UpgradeMemberShipOrderRule implements OrderRule {
     public OrderStatusDto handleOrder(Order order) {
         membershipService.upgradeMembership(order);
         emailService.sendEmail(order.getMembership());
-        return OrderStatusDto.builder().success(true).message("Success ....  ").build();
+        return OrderStatusDto.builder().success(true).message("Membership Upgraded & Email Sent!").build();
     }
 }

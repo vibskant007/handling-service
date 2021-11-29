@@ -23,7 +23,7 @@ public class PhysicalOrderRule implements OrderRule {
         packagingSevice.process(order);
         commisionService.calculateCommision(order.getPhysicalOrder().getPrice());
 
-        return OrderStatusDto.builder().success(true).message("Success ....  ").build();
+        return OrderStatusDto.builder().success(true).message("Packaging sent to Royalty Dept & Commission Calculated!").build();
 
     }
 }
